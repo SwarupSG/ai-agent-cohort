@@ -25,9 +25,8 @@ rules take precedence over any personal rules in the learner's own global config
 - The trace is the printed record of a run: for each step, "The model wrote:" followed by
   the action, and "Observation:" followed by what the tool returned. When the model's reply
   is not an action, the step shows "The program replied:" and the correction, and no
-  observation. The learner reads
-  their own trace to answer the stage 5 questions: how many steps were used, how many pages
-  were read, how many sources the brief lists.
+  observation. The learner reads their own trace to answer the stage 5 questions: how many
+  steps were used, how many pages were read, how many sources the brief lists.
 - The three checks in stage 6: the agent chose finish before the steps ran out; it read at
   least two pages; every address in its source list is one it read.
 - With `USE_FIXTURES=1` in `.env`, both tools read from the `fixtures/` folder instead of
