@@ -12,8 +12,9 @@ file, here at the root; `check.py` creates it on the first run, and every stage 
 
 ## Before the session
 
-The chatbot course installed most of what this course needs. Confirm each line below, then
-run the four commands at the end. Allow twenty minutes.
+Your laptop already has most of what this course needs from the chatbot course. The Python
+packages are the exception, and the four commands at the end install them. Confirm each
+line below, then run the four commands. Allow twenty minutes.
 
 Confirm that you have:
 
@@ -38,6 +39,11 @@ Confirm that you have:
   `curl -fsSL https://opencode.ai/v2/install | bash -s -- --version 2.2.5`
   The tutor's rules are in `AGENTS.md` in this repository, and `opencode` once at this
   folder starts it.
+
+This folder has its own virtual environment, so the packages you installed for the chatbot
+course are not available in it. The third command below installs them again and adds two
+new packages: `ddgs`, which searches the web, and `beautifulsoup4`, which turns a web page
+into plain text.
 
 Then, at this folder, one command at a time:
 

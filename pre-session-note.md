@@ -44,6 +44,11 @@ Exactly one block has lines without a `#` when you are done.
 
 ## 3. The packages and the check
 
+This folder has its own virtual environment, so the packages you installed for the chatbot
+course are not available in it. The third command below installs them again and adds two
+new packages: `ddgs`, which searches the web, and `beautifulsoup4`, which turns a web page
+into plain text.
+
 At the repository folder, one command at a time:
 
 `python3 -m venv .venv`
