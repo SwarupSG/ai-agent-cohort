@@ -112,9 +112,14 @@ for step in range(1, MAX_STEPS + 1):
     try:
         action = json.loads(reply)
     except json.JSONDecodeError:
+        correction = ("That was not an action. "
+                      "Reply with one action as JSON and nothing else.")
+        if step == MAX_STEPS - 1:
+            correction += " Only one step is left."
+            correction += " Choose finish on your next step."
+        print("The program replied:", correction)
         history.append({"role": "assistant", "content": reply})
-        history.append({"role": "user",
-                        "content": "That was not an action. Reply with one action."})
+        history.append({"role": "user", "content": correction})
         continue
 
     # 7. The stop condition, unchanged.

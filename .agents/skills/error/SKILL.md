@@ -23,8 +23,8 @@ metadata:
 Three of the course's messages are results and not faults, and say so: "Could not fetch
 that page" means the site refused the program and the run continues with empty text; "Used
 all 6 steps" in stage 4 is the designed behaviour, because the script has no way to
-finish; "That was not an action" means the model wrote text instead of JSON and the step
-was spent.
+finish; "That was not an action", printed after "The program replied:", means the model
+wrote text instead of JSON and the step was spent.
 
 Do not type the corrected line; the learner types it. Never ask for or display the
 contents of `.env` or a key.

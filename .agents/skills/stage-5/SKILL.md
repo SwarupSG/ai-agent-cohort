@@ -8,7 +8,7 @@ metadata:
 
 ## What this stage adds
 
-A third action, finish, carrying the report, and a break that ends the loop when the model chooses it. Before the last step, the observation also says 'Only one step is left. Choose finish on your next step.' After the loop the brief is printed: the question, the report, and 'Sources seen during this run' with every address that appeared in any search result. Part 7 of the seven, the stop condition. The model may choose finish only because the description offers it; the program stops only because the break line exists.
+A third action, finish, carrying the report, and a break that ends the loop when the model chooses it. Before the last step, the observation also says 'Only one step is left. Choose finish on your next step.'; the correction for a reply that is not an action says the same at that step. After the loop the brief is printed: the question, the report, and 'Sources seen during this run' with every address that appeared in any search result. Part 7 of the seven, the stop condition. The model may choose finish only because the description offers it; the program stops only because the break line exists.
 
 ## The predict question
 

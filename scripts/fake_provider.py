@@ -18,6 +18,9 @@ What it replies, decided from what the request contains:
   step, then a read of each saved page in turn, for ever.
 - Descriptions with a finish action (stages 5 and 6): search, read, read, then
   finish with a report. With LLM_MODEL=fake-weak it finishes after one read.
+  With LLM_MODEL=fake-prose it searches, reads three pages, writes its answer as
+  plain text at step 5, and at step 6 chooses finish only if the program said
+  that one step is left; without that warning it searches again.
 - A request with native tools (the framework file): one tool call for search,
   one for read, then a final text answer.
 """
@@ -41,6 +44,10 @@ REPORT = (
     "(the-world-now.com, investopedia.com). Safe-haven demand during market stress "
     "added to the move."
 )
+PROSE = (
+    "The main drivers of gold this month are interest rates, the dollar and central "
+    "bank buying, according to the pages I read."
+)
 
 
 def count_steps(messages):
@@ -48,13 +55,22 @@ def count_steps(messages):
     return sum(1 for m in messages if m.get("role") == "assistant")
 
 
-def scripted_action(messages, weak):
+def scripted_action(messages, weak, prose=False):
     system = messages[0]["content"] if messages and messages[0]["role"] == "system" else ""
     done = count_steps(messages)
     has_finish = '"finish"' in system
     if done == 0:
         return {"action": "search_web", "query": "gold price drivers this month"}
     reads = done - 1
+    if prose and has_finish:
+        if done == 4:
+            return PROSE          # step 5: the answer, but not as an action
+        if done == 5:             # step 6: finish only if the warning arrived
+            warned = "Only one step is left" in str(messages[-1].get("content", ""))
+            if warned:
+                return {"action": "finish", "report": REPORT}
+            return {"action": "search_web", "query": "gold price drivers and yields"}
+        return {"action": "read_webpage", "url": URLS[reads % len(URLS)]}
     if has_finish and (reads >= 2 or (weak and reads >= 1)):
         return {"action": "finish", "report": REPORT}
     return {"action": "read_webpage", "url": URLS[reads % len(URLS)]}
@@ -99,7 +115,10 @@ class Handler(BaseHTTPRequestHandler):
             message = native_tool_reply(messages)
         elif "Actions:" in system:
             weak = request.get("model") == "fake-weak"
-            message = {"role": "assistant", "content": json.dumps(scripted_action(messages, weak))}
+            prose = request.get("model") == "fake-prose"
+            reply = scripted_action(messages, weak, prose)
+            content = reply if isinstance(reply, str) else json.dumps(reply)
+            message = {"role": "assistant", "content": content}
         else:
             message = {"role": "assistant", "content": STALE}
         self.send({

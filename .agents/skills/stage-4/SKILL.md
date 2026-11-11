@@ -21,7 +21,7 @@ Six steps, each under a rule line of hyphens and each with 'The model wrote:' an
 ## Common messages and what they mean
 
 - 'Used all 6 steps. No report was written.' is the designed behaviour of this stage, because the descriptions offer no way to stop.
-- 'That was not an action. Reply with one action.' is the correction the program puts into the list; it is not an error.
+- 'The program replied: That was not an action. Reply with one action as JSON and nothing else.' is the correction the program puts into the list when the model wrote text instead of JSON; it is not an error, the step is spent, and no observation follows.
 - 'NameError: name observation is not defined' means the else branch under label 4c is missing; it sets the observation when the action name matches no tool.
 - 'The provider refused the request' with 429 part way through a run ends the run; the trace so far is used for the questions.
 - If the same search repeats on every step with the append lines present, the two lines may be indented into the except branch; they belong at the end of the loop body.

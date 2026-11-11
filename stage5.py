@@ -106,15 +106,22 @@ for step in range(1, MAX_STEPS + 1):
         print("Check the three LLM values in .env. If the message says rate limit, wait one minute and run again.")
         raise SystemExit
 
-    # 4b. The program reads the action, unchanged.
+    # 4b. The program reads the action. Before the last step, the correction
+    #     now carries the same warning as part 6, because this branch skips
+    #     part 6.
     reply = response.choices[0].message.content
     print("The model wrote:", reply)
     try:
         action = json.loads(reply)
     except json.JSONDecodeError:
+        correction = ("That was not an action. "
+                      "Reply with one action as JSON and nothing else.")
+        if step == MAX_STEPS - 1:   # NEW in stage 5
+            correction += " Only one step is left."
+            correction += " Choose finish on your next step."
+        print("The program replied:", correction)
         history.append({"role": "assistant", "content": reply})
-        history.append({"role": "user",
-                        "content": "That was not an action. Reply with one action."})
+        history.append({"role": "user", "content": correction})
         continue
 
     # NEW in stage 5

@@ -23,7 +23,9 @@ rules take precedence over any personal rules in the learner's own global config
   2 the model, 3 the tools, 4 the model deciding, 5 the loop, 6 the state, 7 the stop
   condition; stage 6 adds the evaluation, which the glossary card lists as the seventh part.
 - The trace is the printed record of a run: for each step, "The model wrote:" followed by
-  the action, and "Observation:" followed by what the tool returned. The learner reads
+  the action, and "Observation:" followed by what the tool returned. When the model's reply
+  is not an action, the step shows "The program replied:" and the correction, and no
+  observation. The learner reads
   their own trace to answer the stage 5 questions: how many steps were used, how many pages
   were read, how many sources the brief lists.
 - The three checks in stage 6: the agent chose finish before the steps ran out; it read at

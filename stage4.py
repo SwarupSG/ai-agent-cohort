@@ -112,9 +112,11 @@ for step in range(1, MAX_STEPS + 1):
         action = json.loads(reply)
     except json.JSONDecodeError:
         # NEW in stage 4
+        correction = ("That was not an action. "
+                      "Reply with one action as JSON and nothing else.")
+        print("The program replied:", correction)
         history.append({"role": "assistant", "content": reply})
-        history.append({"role": "user",
-                        "content": "That was not an action. Reply with one action."})
+        history.append({"role": "user", "content": correction})
         continue
 
     # 4c. The program runs the one tool the action names, unchanged.
