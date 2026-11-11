@@ -16,7 +16,7 @@ Will check 3, every listed source was read, pass or fail?
 
 ## What the learner should see
 
-The three checks print under the heading 'Checks', between two rule lines of equals signs. Check 1 PASS when the agent chose finish; check 2 PASS when it read two or more pages; check 3 FAIL with 'listed 5, read 3' or similar, because the source list holds every address seen. The Modify changes the line sources = urls_seen to sources = urls_read; check 3 then passes and the brief lists fewer sources, and nothing about the report text changed. The learner then opens one cited page in the browser and searches it for one claim: found, not found, or page refused.
+The three checks print under the heading 'Checks', between two rule lines of equals signs. Check 1 PASS when the agent chose finish; check 2 PASS when it read two or more pages; check 3 FAIL with 'listed 5, read 3' or similar, because the source list holds every address seen. The Modify changes the line sources = urls_seen to sources = urls_read; check 3 then passes and the brief lists fewer sources, and nothing about the report text changed.
 
 ## Common messages and what they mean
 

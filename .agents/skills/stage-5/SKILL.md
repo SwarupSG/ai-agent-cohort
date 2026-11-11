@@ -1,6 +1,6 @@
 ---
 name: stage-5
-description: Course notes for stage 5 of the agent course (stage5.py): what the stage adds, the predict question, the expected behaviour, the trace questions and the common fixes. Load when the learner asks about stage 5, stage5.py, the finish action or the brief.
+description: Course notes for stage 5 of the agent course (stage5.py): what the stage adds, the predict question, the expected behaviour, the counts read from the trace and the common fixes. Load when the learner asks about stage 5, stage5.py, the finish action or the brief.
 metadata:
   opencode/autoinvoke: "true"
 ---
@@ -18,12 +18,12 @@ At which step will the agent finish, and how many pages will it have read by the
 
 'Finished at step N of 6', then the heading 'Research brief' between two rule lines of equals signs, then the brief with about five addresses under it. In the dry run the agent searched once, read three pages, finished at step 5 and listed five sources; two of the five were never opened. The source list is larger than the pages read on purpose; stage 6 measures that.
 
-## The trace questions
+## Counting from the trace
 
-From the learner's own screen, four things. How many steps did the agent use? How many pages did it read, counting the read_webpage actions? How many sources does the brief list? In one line, what made this run stop when the stage 4 run did not? Help the learner count from their trace; do not count for them unless they ask.
+Three counts can be read from the learner's own screen: the steps the agent used, the pages it read (the read_webpage actions) and the sources the brief lists. Help the learner count from their trace; do not count for them unless they ask.
 
 ## Common messages and what they mean
 
-- 'Used all 6 steps. No report was written.' in this stage means the model never chose finish; run again, and if it happens twice, use the trace so far for the questions. Free models differ in whether they follow the finish instruction; the instructor tested the model named in .env.example.
+- 'Used all 6 steps. No report was written.' in this stage means the model never chose finish; run again, and if it happens twice, use the trace so far. Free models differ in whether they follow the finish instruction; the instructor tested the model named in .env.example.
 - 'KeyError: report' means the model wrote the finish action without the report field; run again.
 - A brief that finishes at step 1 or 2 having read nothing is possible and is the clearest case for stage 6; keep that trace.

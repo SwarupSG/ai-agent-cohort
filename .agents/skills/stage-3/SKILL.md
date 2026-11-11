@@ -16,7 +16,7 @@ Which action will the model choose, search_web or read_webpage, and with what qu
 
 ## What the learner should see
 
-'The model wrote:' followed by one line of JSON, then 'Observation: 5 results' and the first 300 characters of the results. The first action is a search with a query close to the goal, because the descriptions say that read_webpage needs a url from a search result and the list has none. The Modify changes the goal line to a question of the learner's own; the model turns any goal into search words with no rule in the program saying how.
+'The model wrote:' followed by one line of JSON, then 'Observation: 5 results' and the first 300 characters of the results. The first action is a search with a query close to the goal, because the descriptions say that read_webpage needs a url from a search result and the list has none. If the learner changes the goal line to a question of their own, the model turns that goal into search words with no rule in the program saying how.
 
 ## Common messages and what they mean
 

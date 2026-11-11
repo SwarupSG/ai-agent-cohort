@@ -6,8 +6,8 @@ Four items, in any order. Each names the file it touches and what finished means
 you did in the class channel with a note of three sentences: what you changed, what you
 kept, and what the trace or the checks showed afterwards.
 
-1. **Make the stage 6 change you chose.** In `stage6.py`, add the change you wrote down in
-   the session, A, B or C, then run `python stage6.py` again.
+1. **Make one change to what the agent may do.** In `stage6.py`, add one of the three
+   changes below, A, B or C, then run `python stage6.py` again.
    - A, a list of allowed sites: a list of site names near the top of the file, and one
      `if` in the `read_webpage` branch that refuses an address whose site is not on the list
      and makes the observation say so.
@@ -21,7 +21,7 @@ kept, and what the trace or the checks showed afterwards.
 2. **Run the framework file.** Inside the virtual environment, run
    `pip install -r requirements-frameworks.txt`, then
    `python 05_frameworks/langchain_agent.py` from the repository root. Finished means: the
-   report printed, and your recognition table checked against a real run. If the run ends
+   report printed. If the run ends
    with "Recursion limit of 20 reached", that is the hidden stop condition firing; run again
    or raise the number in the config line.
 3. **Put the agent behind your chatbot's route and deploy it.** Copy your chatbot's

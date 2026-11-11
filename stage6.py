@@ -1,4 +1,4 @@
-"""Stage 6: three checks measure the run, and one opened page tests one claim.
+"""Stage 6: three checks measure the run.
 
 What this stage adds: a record of which pages the agent read, and three checks
 printed after the run: it finished by itself, it read at least two pages, and

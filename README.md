@@ -91,6 +91,6 @@ The saved search returns the same five results whatever the query.
 
 ## After the session
 
-`MODIFY.md` holds the take-home menu: make the change you chose in stage 6, run the
+`MODIFY.md` holds the take-home menu: make one of three changes to stage 6, run the
 framework file, put the agent behind your chatbot's route and deploy it, and add a third tool
 of your own.
