@@ -89,6 +89,7 @@ input("Predict first: at which step, from 1 to 6, will the agent stop? Write it 
 # 5. The loop. The program asks, runs the action, and asks again.
 MAX_STEPS = 6
 for step in range(1, MAX_STEPS + 1):
+    print("\n" + "-" * 60)   # a rule line, so that each step is easy to find
     print(f"Step {step} of {MAX_STEPS}")
 
     # 2c. Call the model, unchanged.
@@ -136,4 +137,4 @@ for step in range(1, MAX_STEPS + 1):
     history.append({"role": "assistant", "content": reply})
     history.append({"role": "user", "content": observation})
 
-print(f"Used all {MAX_STEPS} steps. No report was written.")
+print(f"\nUsed all {MAX_STEPS} steps. No report was written.")

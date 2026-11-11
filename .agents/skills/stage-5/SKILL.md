@@ -16,7 +16,7 @@ At which step will the agent finish, and how many pages will it have read by the
 
 ## What the learner should see
 
-'Finished at step N of 6', then the brief with about five addresses under it. In the dry run the agent searched once, read three pages, finished at step 5 and listed five sources; two of the five were never opened. The source list is larger than the pages read on purpose; stage 6 measures that.
+'Finished at step N of 6', then the heading 'Research brief' between two rule lines of equals signs, then the brief with about five addresses under it. In the dry run the agent searched once, read three pages, finished at step 5 and listed five sources; two of the five were never opened. The source list is larger than the pages read on purpose; stage 6 measures that.
 
 ## The trace questions
 

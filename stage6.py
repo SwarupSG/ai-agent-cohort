@@ -92,6 +92,7 @@ report = None
 urls_seen = []
 urls_read = []      # NEW in stage 6: pages the agent opened and got text from
 for step in range(1, MAX_STEPS + 1):
+    print("\n" + "-" * 60)
     print(f"Step {step} of {MAX_STEPS}")
 
     # 2c. Call the model, unchanged.
@@ -119,7 +120,7 @@ for step in range(1, MAX_STEPS + 1):
     # 7. The stop condition, unchanged.
     if action["action"] == "finish":
         report = action["report"]
-        print(f"Finished at step {step} of {MAX_STEPS}.")
+        print(f"\nFinished at step {step} of {MAX_STEPS}.")
         break
 
     # 4c. The program runs the one tool the action names. The read branch now
@@ -152,11 +153,15 @@ for step in range(1, MAX_STEPS + 1):
 #    if, so that the checks below can read it. The Modify is that line.
 sources = urls_seen
 if report is None:
-    print(f"Used all {MAX_STEPS} steps. No report was written.")
+    print(f"\nUsed all {MAX_STEPS} steps. No report was written.")
 else:
+    print("\n" + "=" * 60)
     print("Research brief")
+    print("=" * 60)
     print("Question:", GOAL)
+    print()
     print(report)
+    print()
     print("Sources seen during this run:")
     for number, url in enumerate(sources, start=1):
         print(f"{number}. {url}")
@@ -165,6 +170,9 @@ else:
 # 9. The evaluation. Three checks on the state, after the run. Each check is a
 #    sentence about the state that the program can test.
 unread = [url for url in sources if url not in urls_read]
+print("\n" + "=" * 60)
+print("Checks")
+print("=" * 60)
 print("Check 1, finished by itself:", "PASS" if report is not None else "FAIL")
 print(f"Check 2, pages read (needs at least 2): {len(urls_read)},", "PASS" if len(urls_read) >= 2 else "FAIL")
 print(f"Check 3, every listed source was read: listed {len(sources)}, read {len(urls_read)},", "PASS" if not unread else "FAIL")

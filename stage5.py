@@ -92,6 +92,7 @@ MAX_STEPS = 6
 report = None       # NEW in stage 5: stays None until the model chooses finish
 urls_seen = []      # NEW in stage 5: every address that appeared in a search
 for step in range(1, MAX_STEPS + 1):
+    print("\n" + "-" * 60)
     print(f"Step {step} of {MAX_STEPS}")
 
     # 2c. Call the model, unchanged.
@@ -120,7 +121,7 @@ for step in range(1, MAX_STEPS + 1):
     # 7. The stop condition. The model chose finish; the program stops the loop.
     if action["action"] == "finish":
         report = action["report"]
-        print(f"Finished at step {step} of {MAX_STEPS}.")
+        print(f"\nFinished at step {step} of {MAX_STEPS}.")
         break
 
     # 4c. The program runs the one tool the action names. The search branch
@@ -152,12 +153,16 @@ for step in range(1, MAX_STEPS + 1):
 # NEW in stage 5
 # 8. The brief. The source list is every address the agent saw during the run.
 if report is None:
-    print(f"Used all {MAX_STEPS} steps. No report was written.")
+    print(f"\nUsed all {MAX_STEPS} steps. No report was written.")
 else:
     sources = urls_seen
+    print("\n" + "=" * 60)   # a heavier rule line above and below a heading
     print("Research brief")
+    print("=" * 60)
     print("Question:", GOAL)
+    print()
     print(report)
+    print()
     print("Sources seen during this run:")
     for number, url in enumerate(sources, start=1):
         print(f"{number}. {url}")

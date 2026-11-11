@@ -16,7 +16,7 @@ At which step, from 1 to 6, will the agent stop?
 
 ## What the learner should see
 
-Six steps, each with 'The model wrote:' and an observation line, then 'Used all 6 steps. No report was written.' After step 3 the list holds eight entries, three of them written by the model. The model may write a paragraph instead of an action when it has read enough; the program records that as not an action and asks again. With the two append lines under label 6 commented out, step 2 repeats step 1, because the model receives the same list every time; the part that was removed is the state. The learner puts the # signs back before stage 5.
+Six steps, each under a rule line of hyphens and each with 'The model wrote:' and an observation line, then 'Used all 6 steps. No report was written.' After step 3 the list holds eight entries, three of them written by the model. The model may write a paragraph instead of an action when it has read enough; the program records that as not an action and asks again. With the two append lines under label 6 commented out, step 2 repeats step 1, because the model receives the same list every time; the part that was removed is the state. The learner puts the # signs back before stage 5.
 
 ## Common messages and what they mean
 
